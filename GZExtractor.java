@@ -5,7 +5,6 @@ import java.util.zip.GZIPInputStream;
 
 
 public class GZExtractor extends Extractor {
-    private int bufferSize = 1024;
 
 
     public GZExtractor(String sourceFile) throws Exception {
