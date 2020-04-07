@@ -22,7 +22,7 @@ public class Main {
             Base64Decoder decoder = new Base64Decoder();
             FilesWriter writer = new FilesWriter();
             ETL etl = new ETL(extractor, decoder, writer, sourceFile, outputFile);
-            etl.extractEncodedCompressedFile();
+            etl.extractDataToFile();
         } catch (IOException ex) {
             ex.printStackTrace();
         }

@@ -22,7 +22,7 @@ public class ETL {
         this.outputFile = outputFile;
     }
 
-    public void extractEncodedCompressedFile () throws IOException {
+    public void extractDataToFile() throws IOException {
         InputStream extractedData = extractor.extract(this.sourceFile);
         InputStream decodedData = decoder.decode(extractedData);
         writer.write(decodedData, this.outputFile);
