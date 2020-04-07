@@ -1,7 +1,11 @@
-package com.company;
+package org.sierra.ETL;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import org.sierra.Decode.Decoder;
+import org.sierra.Extract.Extractor;
+import org.sierra.Write.Writer;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 public class ETL {
     private Extractor extractor;
@@ -18,12 +22,10 @@ public class ETL {
         this.outputFile = outputFile;
     }
 
-    public void action() throws Exception {
-        extractor.setFis((new FileInputStream(sourceFile)));
-        decoder.setFis(extractor.extract());
-        writer.setFis(decoder.decode());
-        writer.setFos((new FileOutputStream(outputFile)));
-        writer.write();
+    public void extractEncodedCompressedFile () throws IOException {
+        InputStream extractedData = extractor.extract(this.sourceFile);
+        InputStream decodedData = decoder.decode(extractedData);
+        writer.write(decodedData, this.outputFile);
     }
 
 
